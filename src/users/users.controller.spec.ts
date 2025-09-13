@@ -1,22 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
-import { RolesService } from '../roles/roles.service';
 
 describe('UsersController', () => {
     let controller: UsersController;
 
-    const mockRolesService = {
-        findByName: jest.fn(),
+    const mockUsersService = {
+        create: jest.fn(),
+        findAll: jest.fn(),
+        findOne: jest.fn(),
+        update: jest.fn(),
+        remove: jest.fn(),
     };
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
             controllers: [UsersController],
-            providers: [
-                UsersService,
-                { provide: RolesService, useValue: mockRolesService },
-            ],
+            providers: [{ provide: UsersService, useValue: mockUsersService }],
         }).compile();
 
         controller = module.get<UsersController>(UsersController);
