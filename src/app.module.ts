@@ -30,11 +30,12 @@ type SupportedDbTypes =
                 password: configService.get<string>('DB_PASSWORD') ?? 'root',
                 database: configService.get<string>('DB_DATABASE') ?? 'test',
                 entities: [__dirname + '/**/*.entity{.ts,.js}'],
-                synchronize: configService.get<boolean>('DB_SYNCHRONIZE') ?? false,
+                synchronize:
+                    configService.get<boolean>('DB_SYNCHRONIZE') ?? false,
             }),
         }),
     ],
     controllers: [AppController],
     providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}
